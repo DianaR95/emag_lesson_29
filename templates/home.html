@@ -71,17 +71,12 @@
 
     <br>
 
-    <button onclick="display_most_expensive_form()" id="button_most_expensive" style="display:block">Show Most Expensive Product</button><br>
-    <br>
-    <form id="most_expensive_form" action="/most_expensive" style="display: none" method="get">
-        <div id="most_expensive_result">
-        <h3>Most Expensive Product</h3>
-        <p>Name: {{ most_expensive.name }}</p>
-        <p>Store: {{ most_expensive.store }}</p>
-        <p>Price: {{ most_expensive.price }}</p>
-        </div>
-    </form>
+    <button onclick="get_most_expensive_product()" id="button_most_expensive">Show Most Expensive Product</button>
 
+<div id="most_expensive_result" style="display: none;">
+    <h3>Most Expensive Product:</h3>
+    <p>Name: <span id="prod_name"></span></p>
+</div>
 
 
 </body>

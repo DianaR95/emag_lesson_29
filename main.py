@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 import emag_db
 
@@ -67,8 +67,7 @@ def update_price():
 @app.route("/most_expensive", methods=["GET"])
 def most_expensive():
     most_expensive_product = emag_db.get_most_expensive_product(config)
-    data = emag_db.read_products(config)
-    return render_template("home.html", data=data, most_expensive=most_expensive_product)
+    return jsonify({"name": most_expensive_product})
 
 if __name__ == '__main__':
     app.run()

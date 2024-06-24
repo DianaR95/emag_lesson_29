@@ -62,11 +62,13 @@ def update_price(config: dict, name: str, new_price: str, table: str = "emag.pro
 def get_most_expensive_product(config: dict, table: str = "emag.products"):
     with ps.connect(**config) as conn:
         with conn.cursor() as cursor:
-            sql_query = f"SELECT name, store, price FROM {table} ORDER BY price DESC LIMIT 1"
+            sql_query = f"SELECT name FROM {table} ORDER BY price DESC LIMIT 1"
             cursor.execute(sql_query)
             product = cursor.fetchone()
-            columns = [desc[0] for desc in cursor.description]
-            return dict(zip(columns, product)) if product else None
+            if product:
+                return product[0]
+            else:
+                return None
 
 
 if __name__ == '__main__':

@@ -41,3 +41,13 @@ function display_most_expensive_form() {
         document.getElementById("most_expensive_form").style.display = 'block'
     }
 }
+
+function get_most_expensive_product() {
+    fetch('/most_expensive')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('most_expensive_result').style.display = 'block';
+            document.getElementById('prod_name').textContent = data.name;
+        })
+        .catch(error => console.error('Error:', error));
+}
