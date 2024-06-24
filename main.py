@@ -37,6 +37,38 @@ def web_login():
     return render_template("login.html")
 
 
+@app.route("/add_products", methods=["POST"])
+def add_new_product():
+    name = request.form['product_name']
+    store = request.form['store']
+    price = request.form['price']
+    new_product = emag_db.add_product(config, name, price, store)
+    data = emag_db.read_products(config)
+    return render_template("home.html", data=data)
+
+
+@app.route("/delete_product", methods=["POST"])
+def delete_product():
+    name = request.form['product_name']
+    emag_db.delete_product(config, name)
+    data = emag_db.read_products(config)
+    return render_template("home.html", data=data)
+
+
+@app.route("/update_price", methods=["POST"])
+def update_price():
+    name = request.form['product_name']
+    new_price = request.form['new_price']
+    emag_db.update_price(config, name, new_price)
+    data = emag_db.read_products(config)
+    return render_template("home.html", data=data)
+
+
+@app.route("/most_expensive", methods=["GET"])
+def most_expensive():
+    most_expensive_product = emag_db.get_most_expensive_product(config)
+    data = emag_db.read_products(config)
+    return render_template("home.html", data=data, most_expensive=most_expensive_product)
 
 if __name__ == '__main__':
     app.run()

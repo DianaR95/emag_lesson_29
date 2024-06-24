@@ -17,3 +17,27 @@ function display_add_product_form() {
         document.getElementById("add_product").style.display = 'block'
     }
 }
+
+function display_delete_product_form() {
+    let delete_product_button = document.getElementById("button_del")
+    delete_product_button.style.display = 'none'
+    if (delete_product_button.style.display === 'none') {
+        document.getElementById("delete_product").style.display = 'block'
+    }
+}
+
+function display_update_price_form() {
+    let update_price_button = document.getElementById("button_update")
+    update_price_button.style.display = 'none'
+    if (update_price_button.style.display === 'none') {
+        document.getElementById("update_price").style.display = 'block'
+    }
+}
+
+function display_most_expensive_form() {
+    let most_expensive_button = document.getElementById("button_most_expensive")
+    most_expensive_button.style.display = 'none'
+    if (most_expensive_button.style.display === 'none') {
+        document.getElementById("most_expensive_form").style.display = 'block'
+    }
+}
