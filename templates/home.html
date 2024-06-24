@@ -45,6 +45,44 @@
 
             <button type="submit" id="send">Send</button>
         </form>
+    <br>
+    <br>
+    <button onclick="display_update_price_form()()" id = "button_update" style="display:block">Update Price</button><br>
+    <br>
+    <br>
+    <form id="delete_product" action="/delete_product" style="display: none" method="post">
+        <label for="product_name">Product name</label>
+        <input type="text" id="delete_name" name="product_name" required><br>
+    <button type="submit" id="delete">Delete</button>
+    </form>
+    <br>
+    <button onclick="display_delete_product_form()" id = "button_del" style="display:block">Delete Product</button><br>
+    <br>
+    <br>
+    <form id="update_price" action="/update_price" style="display: none" method="post">
+        <label for="update_name">Product name</label>
+        <input type="text" id="update_name" name="product_name" required><br>
+
+        <label for="new_price">New Price:</label>
+        <input type="text" id="new_price" name="new_price" required><br>
+
+    <button type="submit" id="update">Update</button>
+    </form>
+
+    <br>
+
+    <button onclick="display_most_expensive_form()" id="button_most_expensive" style="display:block">Show Most Expensive Product</button><br>
+    <br>
+    <form id="most_expensive_form" action="/most_expensive" style="display: none" method="get">
+        <div id="most_expensive_result">
+        <h3>Most Expensive Product</h3>
+        <p>Name: {{ most_expensive.name }}</p>
+        <p>Store: {{ most_expensive.store }}</p>
+        <p>Price: {{ most_expensive.price }}</p>
+        </div>
+    </form>
+
+
 
 </body>
 </html>
